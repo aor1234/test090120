@@ -4,6 +4,35 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--<script src="liff-starter.js"></script> -->
+        <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            window.onload = function(e) {
+                e.preventDefault()
+            };
+
+        function onSubmit() {
+            $(document).ready(function() {
+                $.ajax({
+                    type: "POST",
+                    dataType: "text", 
+                    url: "https://damp-bayou-88423.herokuapp.com/liff",
+                    contentType: "application/json; charset=utf-8",
+
+                    success: function(res) {
+                        alert(res); 
+                           
+                    },
+                    error: function(res) {
+                        alert("เกิดข้อผิดพลาด " + res);
+                    }
+                });
+            });
+        };
+    </script>
+    </head>
         <body>
             <div class="regisbox">
                 <img src="https://cdn.icon-icons.com/icons2/582/PNG/512/man-2_icon-icons.com_55041.png" class="avatar">
@@ -15,11 +44,8 @@
                     <input type="date" name="date_start" id="date_start" >
                     <p>วันที่สิ้นสุด</p>
                     <input type="date" name="date_stop" id="date_stop">
-                    <input type="submit" id="sendmessagebutton" value="Submit">
+                    <input type="submit" id="sendmessagebutton" value="Submit" onclick="onSubmit();" >
                 </form>
             </div">
-        <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-        <script src="liff-starter.js"></script>
         </body>
-    </head>
 </html>
